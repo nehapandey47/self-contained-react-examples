@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Demo</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="content"></div>
+
+    <script type="text/babel">
+
+        var Hello = React.createClass( {
+
+            getInitialState(){
+
+                return {show:false}
+
+            },
+
+            showHide(){
+
+                this.setState({show:!this.state.show})
+            },
+
+            render() {
+
+                var content;
+
+                if(this.state.show)
+                    content = <div>Hello {this.props.name}</div>;
+
+                return (
+                    <p>
+                      {content}
+                      <button onClick={this.showHide}>Show/Hide</button>
+                    </p>
+                );
+            }
+        });
+
+        ReactDOM.render( <Hello name='Leo' />,
+            document.getElementById('content') );
+
+    </script>
+</body>
+
+</html>

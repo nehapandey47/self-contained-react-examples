@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.29.4/react-bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div id="content"></div>
+
+<script type="text/babel">
+
+
+    var Panel = ReactBootstrap.Panel;
+    var Well = ReactBootstrap.Well;
+    var Alert = ReactBootstrap.Alert;
+    var Button = ReactBootstrap.Button;
+    var ButtonToolbar = ReactBootstrap.ButtonToolbar;
+    var Modal = ReactBootstrap.Modal;
+    var Grid = ReactBootstrap.Grid;
+    var Row = ReactBootstrap.Row;
+    var Gluphicon = ReactBootstrap.Glyphicon;
+    var Col = ReactBootstrap.Col;
+
+
+    var Hello = React.createClass({
+
+        getInitialState(){ return {saHello:false} },
+
+        hideHello(){ this.setState({sayHello:false})},
+
+        render() {
+            return (
+
+                <Grid style={{paddingTop:200}}>
+                    <Row>
+                        <Col xs={4}>
+                          <Well>
+                            <h1>React Demo</h1>
+                            <Panel>
+                              <Button
+                                bsStyle='primary'
+                                onClick={e => this.setState({sayHello:true})}>
+                                Say Hello
+                              </Button>
+                            </Panel>
+                          </Well>
+                        </Col>
+
+                    </Row>
+
+                    <Modal show={this.state.sayHello} onHide={this.hideHello}>
+                      <Modal.Header closeButton>
+                          <Modal.Title>Hello Box</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                          <h3>Hello {this.props.name}!</h3>
+                      </Modal.Body>
+                      <Modal.Footer>
+                          <ButtonToolbar>
+                              <Button bsStyle="primary" onClick={this.hideHello} >OK</Button>
+                          </ButtonToolbar>
+                      </Modal.Footer>
+                    </Modal>
+
+                </Grid>
+
+            );
+        }
+
+    });
+
+
+    ReactDOM.render(
+        <Hello name='Leo'/>,
+        document.getElementById('content')
+    );
+
+
+</script>
+</body>
+</html>
